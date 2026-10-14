@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-from data.productos import productos
-from flask import Flask, render_template, request
-=======
-from flask import Flask, render_template
->>>>>>> 8ba94d9 (init)
-=======
 from data.productos import productos
 from flask import Flask, render_template, request, url_for, redirect
 from form import LoginForm
->>>>>>> ce48c45 (init)
 
 # Inicializamos la aplicación
 app = Flask(__name__)
