@@ -1,12 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from data.productos import productos
 from flask import Flask, render_template, request
 =======
 from flask import Flask, render_template
 >>>>>>> 8ba94d9 (init)
+=======
+from data.productos import productos
+from flask import Flask, render_template, request, url_for, redirect
+from form import LoginForm
+>>>>>>> ce48c45 (init)
 
 # Inicializamos la aplicación
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "mi_clave_secreta_super_segura"
 
 
 # Ruta 1: Devuelve un HTML muy básico
@@ -97,6 +104,26 @@ def catalogo(id_producto):
         id_producto=id_producto,
         lista_productos=productos,
     )
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+
+    # validate_on_submit comprueba si la peticion es POST  y si se validan todos los campos
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        print(f"El usuario es {email} con la contraseña {password}")
+
+        return redirect(url_for("gracias"))
+
+    return render_template("login.hmtl", form=form)
+
+
+@app.route("/gracias")
+def gracias():
+    return render_template("gracias.html")
 
 
 if __name__ == "__main__":

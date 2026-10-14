@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 
 {% block content %}
@@ -24,3 +25,37 @@
 </ul>
 
 {% endblock %}
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hola si estamos en el catalogo</h1>
+    <p>Bienvenido, {{ nombre }}!</p>
+    <p>ID del producto: {{ id_producto }}</p>
+    <h3>Lista de Productos</h3>
+    <ul>
+        {% for producto in lista_productos %}
+        <li><strong> {{ producto.nombre }}</strong></li>
+        <li>Precio: {{ producto.precio }}$</li>
+        <li>Disponible: {{ producto.disponible }}</li>
+        {% if producto.disponible %}
+        <li>¡Disponible para la venta!</li>
+        {% else %}
+        <li>No disponible actualmente.</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+
+
+</body>
+
+</html>
+>>>>>>> ce48c45 (init)
