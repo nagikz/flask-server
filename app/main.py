@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 from data.productos import productos
 from flask import Flask, render_template, request
+=======
+from flask import Flask, render_template
+>>>>>>> 8ba94d9 (init)
 
 # Inicializamos la aplicación
 app = Flask(__name__)
@@ -66,6 +70,32 @@ def filtrar_data():
     # return render_template("filtrar-data.html")
     return render_template(
         "catalogo.html", nombre="Filtrado", lista_productos=productos_filtrados
+    )
+
+
+@app.route("/saludo/<name>")
+def saludo(name):
+    return f"<h1>Bienvenido a FLask, {name}</h1>"
+
+
+@app.route("/multiplicar/<int:a>/<int:b>")
+def multiplicar(a, b):
+    return f"<h1>{a} x {b} = {a * b}</h1>"
+
+
+@app.route("/catalogo/<int:id_producto>")
+def catalogo(id_producto):
+    productos = [
+        {"nombre": "Teclado Mecánico", "precio": 10.99, "disponible": True},
+        {"nombre": "Mouse Inalámbrico", "precio": 15.99, "disponible": False},
+        {"nombre": "Monitor LED", "precio": 199.99, "disponible": True},
+    ]
+
+    return render_template(
+        "catalogo.html",
+        nombre="Juan",
+        id_producto=id_producto,
+        lista_productos=productos,
     )
 
 
